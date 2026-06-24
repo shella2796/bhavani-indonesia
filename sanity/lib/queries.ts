@@ -3,7 +3,8 @@ import {client, hasSanityConfig} from "./client";
 export async function sanityFetch<T>(query: string, fallback: T): Promise<T> {
   if (!hasSanityConfig) return fallback;
   try {
-    return await client.fetch<T>(query, {}, {next: {revalidate: 60}});
+    const result = await client.fetch<T | null>(query, {}, {next: {revalidate: 60}});
+return result ?? fallback;
   } catch {
     return fallback;
   }
