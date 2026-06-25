@@ -32,10 +32,12 @@ img { max-width: 100%; object-fit: contain; }
 button, input, textarea, select { font: inherit; }
 h1, h2, h3, p { margin-top: 0; }
 h1, h2, h3 { letter-spacing: 0; }
-h1 { font-size: clamp(2.7rem, 5.4vw, 5.35rem); line-height: 1.02; }
-h2 { font-size: clamp(2rem, 3.8vw, 3.8rem); line-height: 1.08; }
+h1 { font-size: clamp(2.25rem, 4vw, 4.25rem);
+  line-height: 1.08 }
+h2 { font-size: clamp(1.65rem, 2.6vw, 2.8rem);
+  line-height: 1.15; }
 h3 { line-height: 1.2; }
-.shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+.shell { width: min(1600px, calc(100% - 48px)); margin: 0 auto; }
 
 .site-header {
   position: sticky;
@@ -85,9 +87,8 @@ h3 { line-height: 1.2; }
   color: var(--white);
 }
 .hero-copy {
-  align-self: center;
-  padding: 82px max(48px, calc((100vw - 1180px) / 2));
-  padding-right: clamp(45px, 5vw, 82px);
+   align-self: center;
+  padding: 82px clamp(32px, 5vw, 96px);
 }
 .hero-copy h1 { max-width: 760px; margin-bottom: 24px; }
 .hero-copy > p { max-width: 680px; margin-bottom: 0; color: rgba(255,255,255,.76); font-size: clamp(1rem, 1.4vw, 1.15rem); }
@@ -314,8 +315,8 @@ footer { padding: 66px 0 26px; background: var(--dark); color: var(--white); }
 }
 
 @media (max-width: 560px) {
-  h1 { font-size: clamp(2.45rem, 12vw, 3.35rem); }
-  h2 { font-size: clamp(1.85rem, 9vw, 2.55rem); }
+  h1 { font-size: clamp(2rem, 9vw, 2.8rem); }
+h2 { font-size: clamp(1.55rem, 7vw, 2.2rem); }
   .brand { font-size: .87rem; }
   .brand small { display: none; }
   .hero-copy { padding: 58px 20px 64px; }
