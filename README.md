@@ -1,25 +1,51 @@
 # Bhavani Indonesia
 
-Production website for Bhavani Indonesia, built with Next.js and an embedded Sanity Studio.
+Official Bhavani Indonesia website, built with Next.js and an embedded Sanity Studio.
 
-## CMS content
+## Where to edit content
 
-- Website settings and contact details
-- Articles with rich text and image uploads
-- Programs and featured activities
+Use Sanity Studio at `/studio` for:
+
+- Articles, cover images, and article body content
+- Program records and highlights
 - Team profiles
+- Website settings and contact details
 
-## Local setup
+Edit `lib/content.ts` for the fixed organization-profile sections:
 
-1. Create a Sanity project and copy `.env.example` to `.env.local`.
-2. Fill in `NEXT_PUBLIC_SANITY_PROJECT_ID`.
-3. Run `npm install`.
-4. Run `npm run dev`.
-5. Open the website at `http://localhost:3000`.
-6. Open the editor at `http://localhost:3000/studio`.
+- Challenges
+- Program pillars
+- Organization strengths
+- Mission structure
+- Default leadership structure
 
-Without Sanity environment variables, public pages use the included Bhavani fallback content.
+Edit `lib/fallback.ts` for the content shown when Sanity is unavailable or a collection is empty.
 
-## Vercel
+## Local workflow
 
-Import the GitHub repository into Vercel and add the three values from `.env.example` to the project environment variables. Sanity Studio is deployed with the website at `/studio`.
+```powershell
+git pull
+npm.cmd install
+npm.cmd run dev
+```
+
+Open:
+
+- Website: `http://localhost:3000`
+- Studio: `http://localhost:3000/studio`
+
+Before publishing:
+
+```powershell
+npm.cmd run build
+git status
+git add .
+git commit -m "Update Bhavani website"
+git push
+```
+
+Vercel deploys the `main` branch automatically. Sanity content is stored remotely, so Studio edits do not require `git pull`; only source-code changes do.
+
+## Environment
+
+Copy `.env.example` to `.env.local` and keep the real values out of Git. The current project uses Sanity project `peewnyge` and dataset `production`.

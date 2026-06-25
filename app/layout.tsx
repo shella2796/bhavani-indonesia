@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {default: "Bhavani Indonesia", template: "%s | Bhavani Indonesia"},
-  description: "Merangkul diversitas, membangun inklusivitas, dan menumbuhkan perempuan.",
+  description: "Organisasi pemberdayaan perempuan melalui pendidikan, penguatan kapasitas, kolaborasi, riset, dan advokasi.",
 };
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {

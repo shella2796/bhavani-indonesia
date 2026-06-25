@@ -2,18 +2,29 @@ import type {Article, Program, Settings} from "./types";
 
 export const fallbackSettings: Settings = {
   organizationName: "Bhavani Indonesia",
-  tagline: "Merangkul Diversitas. Membangun Inklusivitas. Menumbuhkan Perempuan.",
-  description: "Bhavani Indonesia hadir sebagai ruang reflektif dan inklusif untuk mendengar pengalaman perempuan, memperluas perspektif, dan bertumbuh bersama.",
+  tagline: "Membangun generasi perempuan yang berdaya, kritis, dan inklusif.",
+  description: "Bhavani adalah organisasi pemberdayaan perempuan yang hadir sebagai ruang kolaboratif untuk membangun generasi perempuan yang berdaya, kritis, inklusif, dan memiliki kapasitas kepemimpinan yang kuat.",
   email: "bhavani.official5@gmail.com",
   instagram: "bhavani.id",
-  heroTitle: "Ketika perempuan bertumbuh, perubahan ikut hidup.",
-  heroText: "Bhavani Indonesia membuka ruang untuk belajar, berbagi perspektif, dan membangun relasi yang lebih adil bagi setiap perempuan.",
+  vision: "Menjadi organisasi pemberdayaan perempuan yang tumbuh secara berkelanjutan, meningkatkan kualitas hidup perempuan melalui pendidikan, pelatihan, dan penguatan kapasitas, serta menciptakan lingkungan yang mendukung kesetaraan, pemberdayaan sosial, dan inklusivitas.",
+  heroTitle: "Perempuan sebagai penggerak perubahan.",
+  heroText: "Bhavani memperkuat kapasitas perempuan melalui pendidikan, advokasi, riset, ruang aman, dan kolaborasi lintas sektor.",
 };
 
+export function withFallbackSettings(settings: Settings): Settings {
+  const populated = Object.fromEntries(
+    Object.entries(settings).filter(([, value]) => value !== null && value !== undefined && value !== ""),
+  );
+  return {...fallbackSettings, ...populated};
+}
+
 export const fallbackPrograms: Program[] = [
-  {_id: "live", title: "Bhavani Live Series", shortDescription: "Percakapan daring bersama akademisi, praktisi, aktivis, dan individu dengan pengalaman relevan.", isFeatured: true},
-  {_id: "learn", title: "Ruang Belajar", shortDescription: "Diskusi dan materi edukatif tentang perempuan, relasi, masyarakat, dan pengembangan diri."},
-  {_id: "connect", title: "Bhavani Connect", shortDescription: "Kolaborasi dengan komunitas, lembaga, dan mitra yang membawa visi sejalan."},
+  {_id: "school", slug: "vanbucha-goes-to-school", pillar: "Pemberdayaan Individu", title: "Vanbucha Goes to School", shortDescription: "Edukasi kepemimpinan, karakter, kesadaran sosial, dan literasi digital bagi generasi muda.", highlights: ["SMAN 1 Kota Serang", "SMAN 1 Baros", "Kepemimpinan remaja", "Kesadaran gender"], isFeatured: true},
+  {_id: "session", slug: "bhavani-session", pillar: "Pemberdayaan Individu", title: "Bhavani Session", shortDescription: "Diskusi digital tentang perempuan, kesehatan mental, pendidikan, HAM, dan pengembangan kapasitas.", highlights: ["Kesehatan mental", "Literasi digital", "Kesetaraan gender", "Kepemimpinan muda"]},
+  {_id: "bloom", slug: "bhavani-bloom-festival", pillar: "Kolaborasi & Jejaring", title: "Bhavani Bloom Festival", shortDescription: "Festival kolaboratif untuk memperkuat kepemimpinan perempuan muda dan jejaring komunitas.", highlights: ["Diskusi publik", "Sesi berbagi", "Networking", "Ruang aman"]},
+  {_id: "connect", slug: "bhavani-connect", pillar: "Kolaborasi & Jejaring", title: "Bhavani Connect", shortDescription: "Dialog strategis bersama tokoh, akademisi, praktisi, dan pengambil kebijakan.", highlights: ["Kebijakan publik", "Kepemimpinan", "Lintas sektor", "Generasi muda"]},
+  {_id: "research", slug: "riset-femisida", pillar: "Advokasi Berbasis Data", title: "Riset Femisida", shortDescription: "Kajian berbasis data untuk publikasi edukatif dan rekomendasi kebijakan.", highlights: ["Kajian strategis", "Publikasi edukatif", "Rekomendasi kebijakan", "Literasi publik"]},
+  {_id: "femicide", slug: "kajian-bicara-femisida", pillar: "Advokasi Berbasis Data", title: "Kajian Bicara Femisida", shortDescription: "Forum publik tentang kekerasan berbasis gender, hukum, HAM, dan perlindungan perempuan.", highlights: ["Kekerasan berbasis gender", "Perlindungan perempuan", "HAM", "Advokasi"]},
 ];
 
 export const fallbackArticles: Article[] = [

@@ -24,8 +24,19 @@ export type Article = {
 export type Program = {
   _id: string;
   title: string;
+  slug?: string;
+  pillar?: string;
   shortDescription?: string;
   date?: string;
   image?: unknown;
   isFeatured?: boolean;
+  highlights?: string[];
+};
+
+export type Person = {
+  _id: string;
+  name: string;
+  role?: string;
+  bio?: string;
+  photo?: unknown;
 };
