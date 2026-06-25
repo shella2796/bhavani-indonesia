@@ -30,7 +30,7 @@ export function Footer({settings}: {settings: Settings}) {
         </div>
       </div>
       <div className="shell copyright">
-        <span>© 2026 Bhavani Indonesia</span>
+        <span>© 2024 Bhavani Indonesia</span>
         <span>Pendidikan · Pemberdayaan · Inklusivitas</span>
       </div>
     </footer>

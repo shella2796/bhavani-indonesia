@@ -102,5 +102,5 @@ export const leadership = [
   ["Head of Economic Empowerment", "Lulu Fitriani"],
   ["Head of UMKM & Community Enterprise", "Cahya Rudiana"],
   ["Head of Information, Technology & Communication", "Shella Sukma Dewi Waramena"],
-  ["Head of Media & Creative", "Devina"],
+  ["Head of Media & Creative", "Devina Ayatul Husna"],
 ];
