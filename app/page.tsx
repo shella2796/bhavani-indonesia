@@ -70,7 +70,7 @@ export default async function Home() {
         <section className="section dark">
           <div className="shell">
             <div className="section-head">
-              <div><span className="eyebrow">Arsitektur Program</span><h2>Tiga pilar untuk perubahan yang utuh.</h2></div>
+              <div><span className="eyebrow">Arsitektur Program</span><h2>Empat pilar untuk perubahan yang utuh.</h2></div>
               <p>Bhavani bergerak dari penguatan individu, pembangunan komunitas, hingga advokasi berbasis data.</p>
             </div>
             <div className="pillar-grid">
@@ -92,7 +92,7 @@ export default async function Home() {
           <div className="shell">
             <div className="section-head ink">
               <div><span className="eyebrow green-text">Program Unggulan</span><h2>Dari ruang belajar hingga perubahan sistemik.</h2></div>
-              <p>Enam program yang menghubungkan edukasi, ruang aman, jejaring, riset, dan advokasi.</p>
+              <p>Program - program yang menghubungkan edukasi, ruang aman, jejaring, riset, dan advokasi.</p>
             </div>
             <div className="flagship-grid">
               {flagshipPrograms.map((program, index) => (

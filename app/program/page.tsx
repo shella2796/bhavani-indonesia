@@ -1,21 +1,18 @@
 import Link from "next/link";
 import {Footer} from "@/components/Footer";
 import {Header} from "@/components/Header";
-import {programPillars} from "@/lib/content";
-import {fallbackPrograms, fallbackSettings, withFallbackSettings} from "@/lib/fallback";
-import type {Program, Settings} from "@/lib/types";
-import {programsQuery, sanityFetch, settingsQuery} from "@/sanity/lib/queries";
+import {flagshipPrograms, programPillars} from "@/lib/content";
+import {fallbackSettings, withFallbackSettings} from "@/lib/fallback";
+import type {Settings} from "@/lib/types";
+import {sanityFetch, settingsQuery} from "@/sanity/lib/queries";
 
 export const metadata = {
   title: "Program",
-  description: "Program unggulan Bhavani Indonesia dalam pemberdayaan, kolaborasi, riset, dan advokasi perempuan.",
+  description: "Program unggulan Bhavani Indonesia dalam pendidikan, kepemimpinan, ekonomi, advokasi, dan pengetahuan.",
 };
 
 export default async function ProgramPage() {
-  const [cmsSettings, programs] = await Promise.all([
-    sanityFetch<Settings>(settingsQuery, fallbackSettings),
-    sanityFetch<Program[]>(programsQuery, fallbackPrograms),
-  ]);
+  const cmsSettings = await sanityFetch<Settings>(settingsQuery, fallbackSettings);
   const settings = withFallbackSettings(cmsSettings);
 
   return (
@@ -25,15 +22,15 @@ export default async function ProgramPage() {
         <section className="page-hero">
           <div className="shell">
             <span className="eyebrow">Program Bhavani</span>
-            <h1>Pemberdayaan yang bergerak dari individu hingga kebijakan.</h1>
-            <p>Program Bhavani dirancang berdasarkan kebutuhan nyata masyarakat melalui pendidikan, penguatan kapasitas, ruang aman, kolaborasi lintas sektor, riset, dan advokasi.</p>
+            <h1>Pemberdayaan yang bergerak dari kapasitas diri hingga perubahan sosial.</h1>
+            <p>Program Bhavani dirancang untuk membangun kapasitas, komunitas, kemandirian ekonomi, advokasi, dan pengetahuan yang berpihak pada perempuan serta generasi muda.</p>
           </div>
         </section>
 
         <section className="section white">
           <div className="shell">
             <div className="section-head ink">
-              <div><span className="eyebrow green-text">Tiga Pilar</span><h2>Satu ekosistem, tiga jalur perubahan.</h2></div>
+              <div><span className="eyebrow green-text">Empat Pilar</span><h2>Satu ekosistem, empat jalur perubahan.</h2></div>
             </div>
             <div className="pillar-grid light-pillar-grid">
               {programPillars.map((pillar) => (
@@ -52,18 +49,18 @@ export default async function ProgramPage() {
         <section className="section soft-pink">
           <div className="shell">
             <div className="section-head ink">
-              <div><span className="eyebrow green-text">Program Unggulan</span><h2>Enam program, satu arah gerak.</h2></div>
-              <p>Setiap program mengambil peran berbeda dalam membangun kapasitas, komunitas, pengetahuan, dan perubahan sistemik.</p>
+              <div><span className="eyebrow green-text">Program Unggulan</span><h2>Empat pilar, satu arah gerak.</h2></div>
+              <p>Setiap program mengambil peran berbeda dalam membangun kapasitas, komunitas, kemandirian ekonomi, dan perubahan sosial yang berpihak pada perempuan serta generasi muda.</p>
             </div>
             <div className="program-detail-list">
-              {programs.map((program, index) => (
-                <article id={program.slug || program._id} key={program._id}>
+              {flagshipPrograms.map((program, index) => (
+                <article id={program.slug} key={program.slug}>
                   <div className="program-detail-number">{String(index + 1).padStart(2, "0")}</div>
                   <div>
                     <span className="meta">{program.pillar}</span>
                     <h2>{program.title}</h2>
-                    <p>{program.shortDescription}</p>
-                    <div className="tag-row">{program.highlights?.map((detail) => <small key={detail}>{detail}</small>)}</div>
+                    <p>{program.summary}</p>
+                    <div className="tag-row">{program.details.map((detail) => <small key={detail}>{detail}</small>)}</div>
                   </div>
                 </article>
               ))}
