@@ -1,4 +1,9 @@
-import Image from "next/image";
+const fs = require("fs");
+
+const articlePagePath = "app/artikel/[slug]/page.tsx";
+const cssPath = "app/globals.css";
+
+const articlePage = `import Image from "next/image";
 import {PortableText} from "@portabletext/react";
 import {notFound} from "next/navigation";
 import {Footer} from "@/components/Footer";
@@ -40,7 +45,7 @@ export default async function ArticlePage({params}: {params: Promise<{slug: stri
   const {slug} = await params;
   const fallback = fallbackArticles.find((a) => a.slug === slug);
 
-  const query = `*[_type=="article" && slug.current==$slug][0]{
+  const query = \`*[_type=="article" && slug.current==$slug][0]{
     _id,
     title,
     "slug": slug.current,
@@ -55,7 +60,7 @@ export default async function ArticlePage({params}: {params: Promise<{slug: stri
         asset->
       }
     }
-  }`;
+  }\`;
 
   const article = await sanityFetch<Article | null>(
     query.replace("$slug", JSON.stringify(slug)),
@@ -120,3 +125,41 @@ export default async function ArticlePage({params}: {params: Promise<{slug: stri
     </>
   );
 }
+`;
+
+fs.writeFileSync(articlePagePath, articlePage);
+
+let css = fs.readFileSync(cssPath, "utf8");
+
+const cssToAdd = `
+.article-body-image {
+  margin: 42px 0;
+}
+
+.article-body-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+  background: var(--cream);
+}
+
+.article-body-image figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: .82rem;
+  text-align: center;
+}
+
+.prose .article-body-image + p {
+  margin-top: 28px;
+}
+`;
+
+if (!css.includes(".article-body-image")) {
+  css += "\\n" + cssToAdd;
+}
+
+fs.writeFileSync(cssPath, css);
+
+console.log("Article body image rendering fixed with forced dynamic fetching.");
